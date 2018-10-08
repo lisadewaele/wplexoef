@@ -2,19 +2,54 @@
 $breedte:400px;
 $marge:30px;
 
+
+//kleuren aanmaken
+$base-color:rgb(0,110,255);
+$color-grijs:hsl(hue($base-color),5,80); //hue base color, saturation, lightness
+$color-zwart:hsl(hue($base-color),5,5);
+$kleur-rand:$color-grijs;
+
+$contrast:20%;
+
+$color-light-base:lighten($base-color,$contrast); //verlichten met 20 %
+$color-dark-base:darken($base-color,$contrast);
+
+$color-contrast:complement($base-color); //complementaire kleur opvragen
+
+//fonts veranderen
+$font-title: Roboto, sans-serif;
+$font-main: Montserrat, sans-serif;
+
 body{
-    background-color: red;
+    background-color: white;
+    color:$color-zwart;
+    font-family: $font-main;
+    font-size:0.8em;
+}
+h1{
+    font-family: $font-title;
+    font-size: 24px;
 }
 article.card{
-    background-color: blue;
+    margin:auto;
+    //background-color: blue;
     width:$breedte;
-    $tussenafstand:24px;
+    $tussenafstand:24px; //enkel aangemaakt binnen article
+    border: solid 1px $base-color;
     section{
         padding-top: $tussenafstand;
         padding-bottom: $tussenafstand;
+
+        //border niet volledig laten doorlopen tot de rand
+        margin-left: $tussenafstand;
+        margin-right: $tussenafstand;
+
+        &:not(.intro){
+            border-bottom: solid 2px $kleur-rand;
+        }
     }
     header{
-        background-color:aqua;
+        background-color:$base-color;
         position:relative;
         height:150px;
         img{
@@ -22,17 +57,21 @@ article.card{
             height:$imgsize;
             width:$imgsize;
             border: solid thin #000;
-            background-color:lightgray;
+            background-color:$color-grijs;
             padding:5px;
             position:absolute;
             left:$breedte/2-$imgsize/2; //midden
             bottom:-$imgsize/2; //- imgsize dus de padding komt onderaan het element
             border-radius:50%; //afb cirkel maken
             box-sizing: border-box; //geen rekening moeten houden met padding & border!!!
+            &:hover{
+                //hover-effect instellen
+                padding:0;
+            }
         }
     }
     section.content{
-        background-color:green;
+        //background-color:green;
         text-align:center; //tekst centreren over container
         padding-top: $tussenafstand*3;
         h1{
@@ -41,26 +80,34 @@ article.card{
         }
     }
     section.actions{
-        background-color:orange;
+        //background-color:orange;
         .button{
+            background-color: $color-light-base;
             text-align: center;
             padding:0.25em;
+            //background-color:yellow;
+            width:($breedte/2)-($marge*2)-$tussenafstand;
+            margin-left:$marge;
+            margin-right: $marge;
+            display:inline-block; //line-break voorkomen
+            box-sizing: border-box; //border margin & content worden samengerekend
+
             &.mainaction{
                 //& om element aan te spreken die zowel class button als mainaction heeft
-                background-color:goldenrod;
+                background-color:$color-contrast;
             }
         }
     }
     section.intro{
-        background-color:grey;
+        //background-color:grey;
         text-align: center;
         padding-left:$tussenafstand*1.5;
         padding-right:$tussenafstand*1.5;
     }
     footer{
-        background-color:darkmagenta;
-        border-top: solid 2px #0FF;
-        border-bottom: solid 2px #0FF;
+        background-color:$base-color;
+        border-top: solid 2px $base-color;
+        border-bottom: solid 2px $base-color;
         padding-top:$tussenafstand;
         padding-block-end: $tussenafstand;
         ul{
@@ -71,6 +118,11 @@ article.card{
             li{
                 display:inline;
                 font-size:1.5em;
+                a{
+                    &:hover{
+                        color:$color-light-base;
+                    }
+                }
                 &:not(:last-child){
                     //elke li buiten het laatste
                     margin-right:0.5em;
@@ -79,11 +131,5 @@ article.card{
         }
     }
 }
-div.button{
-    background-color:yellow;
-    width:($breedte/2)-$marge*2;
-    margin-left:$marge;
-    margin-right: $marge;
-    display:inline-block; //line-break voorkomen
-    box-sizing: border-box; //border margin & content worden samengerekend
-}
+    
+
