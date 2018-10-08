@@ -1,3 +1,28 @@
+//variabelen opslaan
+$breedte:400px;
+$marge:30px;
+
 body{
     background-color: red;
+}
+article.card{
+    background-color: blue;
+    header{
+        background-color:aqua;
+    }
+    section.content{
+        background-color:green;
+    }
+    section.actions{
+        background-color:orange;
+    }
+    section.intro{
+        background-color:grey;
+    }
+    footer{
+        background-color:darkmagenta;
+    }
+}
+div.button{
+    background-color:yellow;
 }
