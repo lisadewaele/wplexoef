@@ -7,22 +7,66 @@ body{
 }
 article.card{
     background-color: blue;
+    width:$breedte;
+    $tussenafstand:24px;
+    section{
+        padding-top: $tussenafstand;
+        padding-bottom: $tussenafstand;
+    }
     header{
         background-color:aqua;
+        position:relative;
+        height:150px;
+        img{
+            $imgsize:120px;
+            height:$imgsize;
+            width:$imgsize;
+            border: solid thin #000;
+            background-color:lightgray;
+            padding:5px;
+            position:absolute;
+            left:$breedte/2-$imgsize/2; //midden
+            bottom:-$imgsize/2; //- imgsize dus de padding komt onderaan het element
+            border-radius:50%; //afb cirkel maken
+            box-sizing: border-box; //geen rekening moeten houden met padding & border!!!
+        }
     }
     section.content{
         background-color:green;
     }
     section.actions{
         background-color:orange;
+        .button{
+            text-align: center;
+            padding:0.25em;
+            &.mainaction{
+                //& om element aan te spreken die zowel class button als mainaction heeft
+                background-color:goldenrod;
+            }
+        }
     }
     section.intro{
         background-color:grey;
+        text-align: center;
+        padding-left:$tussenafstand*1.5;
+        padding-right:$tussenafstand*1.5;
     }
     footer{
         background-color:darkmagenta;
+        border-top: solid 2px #0FF;
+        border-bottom: solid 2px #0FF;
+        ul{
+            li{
+                
+            }
+        }
     }
 }
 div.button{
     background-color:yellow;
+    width:($breedte/2)-$marge*2;
+    margin-left:$marge;
+    margin-right: $marge;
+    display:inline-block; //line-break voorkomen
+    box-sizing: border-box; //border margin & content worden samengerekend
 }
