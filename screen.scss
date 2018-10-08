@@ -33,6 +33,12 @@ article.card{
     }
     section.content{
         background-color:green;
+        text-align:center; //tekst centreren over container
+        padding-top: $tussenafstand*3;
+        h1{
+            margin-top:0;
+            margin-bottom: 0.75rem;
+        }
     }
     section.actions{
         background-color:orange;
@@ -55,9 +61,20 @@ article.card{
         background-color:darkmagenta;
         border-top: solid 2px #0FF;
         border-bottom: solid 2px #0FF;
+        padding-top:$tussenafstand;
+        padding-block-end: $tussenafstand;
         ul{
+            //default padding wegdoen
+            margin:0px;
+            padding:0px;
+            text-align: center;
             li{
-                
+                display:inline;
+                font-size:1.5em;
+                &:not(:last-child){
+                    //elke li buiten het laatste
+                    margin-right:0.5em;
+                }
             }
         }
     }
